@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3><a href="{% url 'main' %}">На главную</a></h3>
+<h1>Все блоги</h1>
+
+{% for user in users %}
+    <a href="{% url 'main' %}{{ user.id }}">{{ user }}</a>
+    <br><br>
+{% endfor %}
+
+</body>
+</html>

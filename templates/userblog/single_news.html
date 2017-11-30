@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3><a href="{% url 'main' %}">На главную</a></h3>
+<h3>{{ news.title }}</h3>
+<br>
+{{ news.text }}
+<br><br>
+
+{% if news.image %}
+    <img src="{{ news.image.url }}">
+    <br><br>
+{% endif %}
+
+<i>{{ news.date }}</i>
+
+{% if comments %}
+    <br><br><br><br>
+    <h3>Комментарии:</h3>
+
+    {% for comment in comments %}
+        <b>{{ comment.user }}:</b>
+        <br><br>
+        {{ comment.comment }}
+        <br><br>
+        <i>{{ comment.date }}</i>
+        <br><br>
+    {% endfor %}
+
+{% endif %}
+
+<br><br><br><br><br><br>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="delete">Комментировать</button>
+</form>
+
+</body>
+</html>

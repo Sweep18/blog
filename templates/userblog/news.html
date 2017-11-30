@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3><a href="{% url 'main' %}">На главную</a></h3>
+<br><br>
+
+{% for new in news %}
+    <a href="{% url 'single_news' new.id %}"><b>{{ new.user }} - {{ new.title }}</b></a>
+    <br><br>
+    <i>{{ new.date }}</i>
+    <br><br><br>
+{% endfor %}
+
+</body>
+</html>
